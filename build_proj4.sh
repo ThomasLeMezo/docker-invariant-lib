@@ -52,4 +52,7 @@ if [ ! -e "$HOME/proj4/lib/libproj.a" ]; then
 
   /usr/local/bin/cmake --build .
   make install
+
+  cd $HOME
+  rm -rf ${PROJ4_FILE_NAME}
 fi
