@@ -26,8 +26,8 @@ if [ ! -e "$HOME/vtk/lib/libvtkCommonCore-9.0.a" ]; then
   mkdir -p build
   cd build
 
-  #BUILD_DIR=$HOME/vtk
-  #mkdir -p "${BUILD_DIR}"
+  BUILD_DIR=$HOME/vtk
+  mkdir -p "${BUILD_DIR}"
   /usr/local/bin/cmake -DCMAKE_INSTALL_PREFIX="${BUILD_DIR}" \
 								-DCMAKE_BUILD_TYPE=Release \
 								-DVTK_SMP_IMPLEMENTATION_TYPE=OpenMP \
@@ -45,6 +45,6 @@ if [ ! -e "$HOME/vtk/lib/libvtkCommonCore-9.0.a" ]; then
 								..
   make
   make install
-  # cd ../..
-  # rm -R ${VTK_FILE_NAME}
+  cd ../..
+  rm -rf ${VTK_FILE_NAME}
 fi
