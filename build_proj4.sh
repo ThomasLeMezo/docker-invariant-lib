@@ -38,7 +38,7 @@ if [ ! -e "$HOME/proj4/lib/libproj.a" ]; then
   #       -DENABLE_CURL=OFF\
   #        ..
 
-  cmake -DBUILD_LIBPROJ_SHARED=OFF \
+  /usr/local/bin/cmake -DBUILD_LIBPROJ_SHARED=OFF \
         -DCMAKE_INSTALL_PREFIX=${HOME}/proj4 \
         -DCMAKE_BUILD_TYPE=RELEASE \
         -DBUILD_CCT=OFF \
@@ -50,6 +50,6 @@ if [ ! -e "$HOME/proj4/lib/libproj.a" ]; then
         -DBUILD_PROJINFO=OFF \
          ..
 
-  cmake --build .
+  /usr/local/bin/cmake --build .
   make install
 fi
