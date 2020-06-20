@@ -14,7 +14,7 @@ if [ ! -e "$HOME/netcdf/lib/libnetcdf_c++4.a" ]; then
   tar xzf hdf5-1.12.0.tar.gz
   rm -f hdf5-1.12.0.tar.gz
   cd hdf5-1.12.0
-  ./configure --prefix=/usr/local --enable-parallel --enable-threadsafe --enable-cxx
+  ./configure --prefix=/usr/local --enable-cxx
   make
   make install
   cd ..
@@ -44,5 +44,13 @@ if [ ! -e "$HOME/netcdf/lib/libnetcdf_c++4.a" ]; then
   make install
   cd ..
   rm -rf netcdf-cxx4
+
+
+#   mkdir build
+# cd build
+# cmake ..
+# make
+# ctest
+# make install
 
 fi
