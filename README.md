@@ -1,3 +1,5 @@
-docker build -t thomaslemezo/invariant-lib:1.0 .
+docker build -t thomaslemezo/invariant-lib .
+docker run -it thomaslemezo/invariant-lib /bin/bash
 
-docker run -it thomaslemezo/invariant-lib:1.0 /bin/bash
+/opt/python/cp37-cp37m/bin/python -m pip install twine
+/opt/python/cp37-cp37m/bin/python -m twine upload wheelhouse/* -u ThomasLeMezo

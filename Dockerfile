@@ -9,6 +9,7 @@ RUN rpm -Uvh http://li.nux.ro/download/nux/dextop/el6/x86_64/nux-dextop-release-
 RUN yum install -y doxygen wget zlib-devel libcurl-devel xz openssl-devel libXt-devel sqlite-devel libtiff-devel nano jbigkit-devel
 
 RUN bash $HOME/build_curl.sh
+RUN bash $HOME/build_openssl.sh
 RUN bash $HOME/build_cmake.sh
 RUN bash $HOME/build_netcdf.sh
 RUN bash $HOME/build_ppl.sh
