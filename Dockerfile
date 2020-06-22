@@ -1,6 +1,22 @@
-from benensta/pyibex-docker
+from quay.io/pypa/manylinux2014_x86_64
 
 LABEL maintainer="thomas.le_mezo@ensta-bretagne.org"
+
+#### From benensta/pyibex-docker
+RUN yum install -y cppunit-devel cmake3 flex bison
+RUN cd /tmp
+RUN echo 'alias cmake=cmake3' >> ~/.bashrc
+RUN source ~/.bashrc  
+RUN git clone -b develop https://github.com/ibex-team/ibex-lib.git
+RUN cd ibex-lib   && \
+    mkdir build && \
+    cd build   && \
+    pwd&& \
+    cmake3 -DCMAKE_CXX_FLAGS="-fPIC" -DCMAKE_C_FLAGS="-fPIC" ../   && \
+    make -j2   && \
+    # make check   && \
+    make install
+####
 
 ENV HOME /root
 ADD build_* $HOME/
