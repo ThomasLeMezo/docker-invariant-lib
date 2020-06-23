@@ -19,5 +19,5 @@ cd ${CMAKE_FILE_NAME}
 make
 make install
 
-cd ..
+cd $HOME
 rm -rf ${CMAKE_FILE_NAME}

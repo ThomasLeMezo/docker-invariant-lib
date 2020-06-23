@@ -22,20 +22,17 @@ if [ ! -e "$HOME/gmp/lib/libgmp.so" ]; then
   make check
   make install
   cd ..
+  rm -rf ${GMP_FILE_NAME}
 fi
 
 
 if [ ! -e "$HOME/ppl/lib/libppl.so" ]; then
   echo 'Installing PPL-lib...';
 
-  if [ ! -e "ppl" ]; then
-    git clone git://git.cs.unipr.it/ppl/ppl.git
-    cd ppl
-    git pull
-    git checkout devel
-  else
-    cd ppl
-  fi
+  git clone git://git.cs.unipr.it/ppl/ppl.git
+  cd ppl
+  git pull
+  git checkout devel
   
   autoreconf
   ./configure --prefix=$HOME/ppl --enable-interfaces=cxx --enable-optimization=sspeed --enable-fpmath=default \
@@ -43,6 +40,8 @@ if [ ! -e "$HOME/ppl/lib/libppl.so" ]; then
       --with-gmp=$HOME/gmp --disable-documentation
   make
   make install
+  cd ..
+  rm -rf ppl
 fi
 
 
