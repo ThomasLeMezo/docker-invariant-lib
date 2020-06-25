@@ -14,7 +14,7 @@ if [ ! -e "$HOME/netcdf/lib/libnetcdf_c++4.a" ]; then
   tar xzf hdf5-1.12.0.tar.gz
   rm -f hdf5-1.12.0.tar.gz
   cd hdf5-1.12.0
-  ./configure --prefix=/usr/local --enable-cxx LDFLAGS="-static"
+  ./configure --prefix=/usr/local --enable-cxx
   make
   make install
   cd $HOME
@@ -27,7 +27,7 @@ if [ ! -e "$HOME/netcdf/lib/libnetcdf_c++4.a" ]; then
   rm -f netcdf-c-4.7.4.tar.gz
   cd netcdf-c-4.7.4
   mkdir -p /tmp
-  ./configure --prefix=/usr/local LDFLAGS="-static"
+  ./configure --prefix=/usr/local
   make
   make install
   cd $HOME
@@ -41,7 +41,7 @@ if [ ! -e "$HOME/netcdf/lib/libnetcdf_c++4.a" ]; then
   cd netcdf-cxx4
   git checkout v4.3.1
   mkdir -p /tmp
-  ./configure --prefix=$HOME/netcdf LDFLAGS="-static"
+  ./configure --prefix=$HOME/netcdf
   make
   make install
   cd $HOME
