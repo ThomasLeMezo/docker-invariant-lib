@@ -7,7 +7,7 @@ ADD build_* $HOME/
 
 RUN rpm -Uvh http://li.nux.ro/download/nux/dextop/el6/x86_64/nux-dextop-release-0-2.el6.nux.noarch.rpm
 RUN yum install -y cppunit-devel cmake3 flex bison doxygen wget zlib-devel xz libXt-devel sqlite-devel libtiff-devel nano jbigkit-devel
-RUN yum install -y libcurl-devel openssl-devel
+RUN yum install -y libcurl-devel openssl-devel gdb
 RUN yum update -y
 
 #RUN bash $HOME/build_openssl.sh
