@@ -10,6 +10,8 @@ RUN yum install -y cppunit-devel cmake3 flex bison doxygen wget zlib-devel xz li
 RUN yum install -y libcurl-devel openssl-devel gdb
 RUN yum update -y
 
+#RUN debuginfo-install -y glibc-2.17-307.el7.1.x86_64 libICE-1.0.9-9.el7.x86_64 libSM-1.2.2-2.el7.x86_64 libX11-1.6.7-2.el7.x86_64 libXau-1.0.8-2.1.el7.x86_64 libXext-1.3.3-3.el7.x86_64 libgcc-4.8.5-39.el7.x86_64 libstdc++-4.8.5-39.el7.x86_64 libuuid-2.23.2-63.el7.x86_64 libxcb-1.13-1.el7.x86_64
+
 #RUN bash $HOME/build_openssl.sh
 #RUN bash $HOME/build_curl.sh
 RUN bash $HOME/build_cmake.sh
