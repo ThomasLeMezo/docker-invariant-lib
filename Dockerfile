@@ -30,7 +30,7 @@ RUN cd ibex-lib   && \
     mkdir build && \
     cd build   && \
     pwd&& \
-    cmake3 -DCMAKE_CXX_FLAGS="-fPIC" -DCMAKE_C_FLAGS="-fPIC" ../   && \
+    cmake3 -DCMAKE_CXX_FLAGS="-fPIC" -DCMAKE_C_FLAGS="-fPIC" -DCMAKE_BUILD_TYPE=Debug ../   && \
     make -j2   && \
     # make check   && \
     make install
