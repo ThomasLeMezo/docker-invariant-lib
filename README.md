@@ -1,6 +1,9 @@
 docker build -t thomaslemezo/invariant-lib .
 docker run -it thomaslemezo/invariant-lib /bin/bash
 
+docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -it thomaslemezo/invariant-lib:debug /bin/bash 
+
+
 /opt/python/cp37-cp37m/bin/python -m pip install twine
 /opt/python/cp37-cp37m/bin/python -m twine upload wheelhouse/* -u ThomasLeMezo
 
@@ -11,32 +14,39 @@ git submodule update --init
 
 # Debug
 
-/opt/python/cp36-cp36m/bin/python -m pip uninstall pyinvariant -y
-bash scripts/docker/build_pybinding.sh
+```
+alias python="/opt/python/cp36-cp36m/bin/python"
+bash scripts/docker/debug.sh
+export PYTHONPATH="/usr/share/gdb/python/"
+gdb -ex r --args /opt/python/cp36-cp36m/bin/python p/io/test.py
+```
+Dans gdb, option :
+```
+bt
+```
 
-gdb /opt/python/cp36-cp36m/bin/python
+# Debug GUI
+/opt/python/cp36-cp36m/bin/python -m pip install --user pipx
+/opt/python/cp36-cp36m/bin/python -m userpath append ~/.local/bin
+source ~/.bashrc
+pipx install gdbgui
+
 
 # test.py
 
 
+```
+from pyinvariant import *
 
+space = IntervalVector([[-3, 3],[-3,3]])
+f = Function("x[2]", "(x[0],x[1])")
+print(f.eval_vector(space))
+dyn = DynamicsFunction(f, FWD, False)
+print(dyn.eval(space))
+```
 
-import os
-import signal
+#############
 
-PID = os.getpid()
-
-def do_nothing(*args):
-    pass
-    
-def foo():
-    from pyinvariant import *
-	space = IntervalVector([[-3, 3],[-3,3]])
-	f = Function("x[2]", "(x[0],x[1])")
-	print(f.eval(space))
-	dyn = DynamicsFunction(f, FWD)
-	print(dyn.eval(space))
-
-signal.signal(signal.SIGUSR1, do_nothing)
-
-foo()
+yum install -y centos-release-scl
+yum install -y devtoolset-7
+scl enable devtoolset-7 bash
